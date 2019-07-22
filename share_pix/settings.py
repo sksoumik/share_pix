@@ -112,4 +112,5 @@ LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
+# For sending password reset link using email in case the user forgets the password.
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
