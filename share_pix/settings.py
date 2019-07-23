@@ -102,11 +102,12 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+# MEDIA_URL is the base URL to serve the media files uploaded by users
+MEDIA_URL = '/media/'
+# MEDIA_ROOT is the local path where they reside
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
@@ -114,3 +115,5 @@ LOGOUT_URL = 'logout'
 
 # For sending password reset link using email in case the user forgets the password.
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
