@@ -11,7 +11,7 @@ SECRET_KEY = 'ze134*o@h%ubp-c!2dphdh02(!#6qmc(75p2)(-di%738nh#fg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -34,6 +35,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'share_pix.urls'
@@ -50,6 +52,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -119,4 +123,18 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 AUTHENTICATION_BACKENDS = [
 'django.contrib.auth.backends.ModelBackend',
 'account.authentication.EmailAuthBackend',
+'social_core.backends.facebook.FacebookOAuth2',
+'social_core.backends.twitter.TwitterOAuth',
+'social_core.backends.google.GoogleOAuth2',
 ]
+
+# social auth settings
+SOCIAL_AUTH_FACEBOOK_KEY = '429952364258636' # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '6e89ba97e745e59625a960e3a77b26af' # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_TWITTER_KEY = '0Ke4vaFEM1upy24psCRLIgOk0' # Twitter Consumer Key
+SOCIAL_AUTH_TWITTER_SECRET = 's4fpJ9xw6zWIU7lNTFRC93fXmtmwjbpdrpS8lzsFL6zKv3b1I7 ' # Twitter Consumer Secret
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '759453334070-esokajlphs7om7bv159qbj71ocei6vlr.apps.googleusercontent.com' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'UtzjVFwqzrCoG5ydt2UopT9D'
